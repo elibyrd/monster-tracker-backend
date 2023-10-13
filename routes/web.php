@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\MonsterController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Resources\MonsterResource;
+use App\Models\Monster;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,6 +31,10 @@ Route::get('/', function () {
 Route::resource('monsters', MonsterController::class)
     ->only(['index', 'create', 'store', 'show', 'edit', 'update'])
     ->middleware(['auth', 'verified']);
+
+Route::get('/getAllMonsters', function () {
+    return MonsterResource::collection(Monster::all());
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -1,4 +1,6 @@
 import React from 'react';
+import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { usePage } from '@inertiajs/react';
 
 export default function Monster({ monster, detailedView }) {
@@ -7,18 +9,23 @@ export default function Monster({ monster, detailedView }) {
     let details;
     if(detailedView){
         details = <div>
-            <p className="mt-4 text-lg text-gray-900">Max HP: {monster.maxHP}</p>
+            <p className="mt-4 text-lg text-gray-900"><strong>Max HP:</strong> {monster.maxHP}</p>
             {monster.AC ?
-                <p className="mt-4 text-lg text-gray-900">AC: {monster.AC}</p>
+                <p className="mt-4 text-lg text-gray-900"><strong>AC:</strong> {monster.AC}</p>
             :''}
             {monster.legendaryActions ?
-                <p className="mt-4 text-lg text-gray-900">Legendary Actions: {monster.legendaryActions}</p>
+                <p className="mt-4 text-lg text-gray-900"><strong>Legendary Actions:</strong> {monster.legendaryActions}</p>
             :''}
             {monster.legendaryResistances ?
-                <p className="mt-4 text-lg text-gray-900">Legendary Resistances: {monster.legendaryResistances}</p>
+                <p className="mt-4 text-lg text-gray-900"><strong>Legendary Resistances:</strong> {monster.legendaryResistances}</p>
             :''}
             {monster.statblock ?
-                <p className="mt-4 text-lg text-gray-900">{monster.statblock}</p>
+                <>
+                    <hr className="mt-4" />
+                    <Markdown className='mt-4 statblock-markdown' remarkPlugins={[remarkGfm]} >
+                        {monster.statblock}
+                    </Markdown>
+                </>
             :''}
         </div>
     }

@@ -1,7 +1,9 @@
 import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
+import Markdown from 'react-markdown';
 import PrimaryButton from '@/Components/PrimaryButton';
 import React from 'react';
+import remarkGfm from 'remark-gfm';
 import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 
@@ -99,6 +101,14 @@ export default function MonsterForm({ monster, isNew }) {
                     onChange={e => setData('statblock', e.target.value)}
                 ></textarea>
                 <InputError message={errors.statblock} className="mt-2" />
+                {data.statblock.length > 0 &&
+                    <div>
+                        <p className="mt-4">Preview:</p>
+                        <Markdown className='statblock-markdown statblock-preview border-gray-300 rounded-md shadow-sm mt-2' remarkPlugins={[remarkGfm]} >
+                            {data.statblock}
+                        </Markdown>
+                    </div>
+                }
             </div>
             <PrimaryButton className="mt-4" disabled={processing}>{isNew?'Create':'Update'} monster</PrimaryButton>
         </form>

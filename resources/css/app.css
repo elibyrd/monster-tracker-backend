@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.statblock-preview {
+    background: #fff;
+    padding: .5rem;
+}
+
+.statblock-markdown h1, .statblock-markdown h2, .statblock-markdown h3 { font-weight: bold; }
+.statblock-markdown h1 {font-size: 1.5em; }
+.statblock-markdown h2 {font-size: 1.25em; }
+.statblock-markdown h2 {font-size: 1.15em; }
+.statblock-markdown p, .statblock-markdown table {
+    margin: .5rem 0;
+}
+.statblock-markdown table {
+    border: 1px solid #dee2e6;
+}
+.statblock-markdown table th, .statblock-markdown table td {
+    padding: .5rem;
+    text-align: center;
+    border-width: 1px;
+}

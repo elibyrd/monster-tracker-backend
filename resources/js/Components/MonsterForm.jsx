@@ -1,6 +1,8 @@
 import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import React from 'react';
+import TextInput from '@/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 
 export default function MonsterForm({ monster, isNew }) {
@@ -26,39 +28,79 @@ export default function MonsterForm({ monster, isNew }) {
 
     return (
         <form onSubmit={submit}>
-        <input
-          value={data.name}
-          placeholder="Monster name"
-          onChange={e => setData('name', e.target.value)}
-        />
-        <input
-            value={data.maxHP}
-            placeholder="Max HP"
-            onChange={e => setData('maxHP', e.target.value)}
-        />
-        <input
-            value={data.AC}
-            placeholder="AC"
-            onChange={e => setData('AC', e.target.value)}
-        />
-        <input
-            value={data.legendaryActions}
-            placeholder="Legendary Actions"
-            onChange={e => setData('legendaryActions', e.target.value)}
-        />
-        <input
-            value={data.legendaryResistances}
-            placeholder="Legendary Resistances"
-            onChange={e => setData('legendaryResistances', e.target.value)}
-        />
-        <textarea
-            value={data.statblock}
-            placeholder="Statblock"
-            className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-            onChange={e => setData('statblock', e.target.value)}
-        ></textarea>
-        <InputError message={errors.message} className="mt-2" />
-        <PrimaryButton className="mt-4" disabled={processing}>{isNew?'Create':'Update'} monster</PrimaryButton>
-    </form>
+            <div>
+                <InputLabel htmlFor="name" value="Monster name" />
+                <TextInput
+                    id="name"
+                    name="name"
+                    value={data.name}
+                    className="mt-1 block w-full"
+                    isFocused={true}
+                    onChange={(e) => setData('name', e.target.value)}
+                />
+                <InputError message={errors.name} className="mt-2" />
+            </div>
+
+            <div className="mt-4">
+                <InputLabel htmlFor="maxHP" value="Max HP" />
+                <TextInput
+                    id="maxHP"
+                    name="maxHP"
+                    value={data.maxHP}
+                    className="mt-1 block w-full"
+                    onChange={(e) => setData('maxHP', e.target.value)}
+                />
+                <InputError message={errors.maxHP} className="mt-2" />
+            </div>
+
+            <div className="mt-4">
+                <InputLabel htmlFor="AC" value="AC" />
+                <TextInput
+                    id="AC"
+                    name="AC"
+                    value={data.AC}
+                    className="mt-1 block w-full"
+                    onChange={(e) => setData('AC', e.target.value)}
+                />
+                <InputError message={errors.AC} className="mt-2" />
+            </div>
+
+            <div className="mt-4">
+                <InputLabel htmlFor="legendaryActions" value="Legendary Actions" />
+                <TextInput
+                    id="legendaryActions"
+                    name="legendaryActions"
+                    value={data.legendaryActions}
+                    className="mt-1 block w-full"
+                    onChange={(e) => setData('legendaryActions', e.target.value)}
+                />
+                <InputError message={errors.legendaryActions} className="mt-2" />
+            </div>
+
+            <div className="mt-4">
+                <InputLabel htmlFor="legendaryResistances" value="Legendary Resistances" />
+                <TextInput
+                    id="legendaryResistances"
+                    name="legendaryResistances"
+                    value={data.legendaryResistances}
+                    className="mt-1 block w-full"
+                    onChange={(e) => setData('legendaryResistances', e.target.value)}
+                />
+                <InputError message={errors.legendaryResistances} className="mt-2" />
+            </div>
+
+            <div className="mt-4">
+                <InputLabel htmlFor="statblock" value="Statblock" />
+                <textarea
+                    id="statblock"
+                    name="statblock"
+                    value={data.statblock}
+                    className="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                    onChange={e => setData('statblock', e.target.value)}
+                ></textarea>
+                <InputError message={errors.statblock} className="mt-2" />
+            </div>
+            <PrimaryButton className="mt-4" disabled={processing}>{isNew?'Create':'Update'} monster</PrimaryButton>
+        </form>
     );
 }

@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 
+.button-outline {
+    color: #334155;
+    border: 1px solid #334155;
+    border-radius: .25rem;
+    padding: .5rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+.button-outline:hover, .button-outline:focus {
+    color: white;
+    background-color: #334155;
+}
+
+
 .statblock-preview {
     background: #fff;
     padding: .5rem;
@@ -23,3 +37,6 @@
     text-align: center;
     border-width: 1px;
 }
+.statblock-markdown ol, .statblock-markdown ul { padding-left: 2em; }
+.statblock-markdown ol { list-style: numbered; }
+.statblock-markdown ul { list-style: disc; }

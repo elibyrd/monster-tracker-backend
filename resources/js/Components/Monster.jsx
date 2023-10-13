@@ -38,11 +38,11 @@ export default function Monster({ monster, detailedView }) {
             </div>
             {detailedView ? '' :
                 <div className="flex-1">
-                    <a href={route('monsters.show', monster.id)} className="">
+                    <a href={route('monsters.show', monster.id)} className="button-outline focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                         View
                     </a>
                     {monster.user.id === auth.user.id &&
-                        <a href={route('monsters.edit', monster.id)} className="" >
+                        <a href={route('monsters.edit', monster.id)} className="button-outline ms-2 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" >
                             Edit
                         </a>
                     }
